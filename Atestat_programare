@@ -247,3 +247,24 @@ int main(){
       }
       cout<<endl;
       
+  PROBLEMA 7 
+  #include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main()
+{
+    citire();
+    for(int i=n;i>=1;i--)
+    {
+       cout<<x[i]<<" ";
+    }
+    cout<<endl;
