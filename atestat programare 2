@@ -271,3 +271,40 @@ int main()
        cout<<x[i]<<" ";
     }
     cout<<endl;
+
+Problema 17
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+int main() {
+  char s[200],litera,*p;
+  int k=1;
+  cin.getline(s,200);
+   cin>>litera;
+   cout<<"a)\n";
+  for (int i = 0; i < strlen(s); i++) {
+    if (s[i] >= 'A' && s[i] <= 'Z'){
+      cout<<char(s[i]+('a' - 'A'));
+    }
+    else{
+      cout << s[i];
+      if(s[i]==' '){
+        k++;
+      }
+    }
+  }
+ cout<<"\nb)\n";
+ cout<<'\n'<<k<<'\n';
+  p=strtok(s," ");
+  while(p!=NULL){
+     if(p[0]!='M'){
+        cout<<p<<" ";
+     }
+    else{
+       cout<<litera<<p+1<<" ";
+    }
+    p=strtok(NULL," ");
+  }
+
+}
