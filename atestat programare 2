@@ -374,6 +374,65 @@ int main()
     }
     fout<<s;
 }
+Problema 9 
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,a[100][100]={};
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+      for(int j=1;j<=n;j++){
+        fin>>a[i][j];
+      }
+    }
+}
+int prim(int n){
+    if(n==1 || n==0){
+        return 0;
+    }
+    for(int d=2;d*d<=n;d++){
+        if(n%d==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+int main()
+{
+    citire();
+    for(int i=1;i<=n;i++){
+      for(int j=1;j<=n;j++){
+            cout<<a[i][j]<<" ";
+      }
+      cout<<endl;
+    }
+    int k;
+    cin>>k;
+    for(int i=1;i<=n;i++){
+        a[i][n-i+1]=k;
+    }
+    for(int i=1;i<=n;i++){
+      for(int j=1;j<=n;j++){
+            cout<<a[i][j]<<" ";
+      }
+      cout<<endl;
+    }
+    int ok=0;
+    for(int i=1;i<=n;i++){
+      for(int j=1;j<=n;j++){
+            if(prim(a[i][j])==1){
+                ok=1;
+                fout<<a[i][j]<<" ";
+            }
+      }
+    }
+    if(ok==0){
+        fout<<"NU";
+    }
+}
 
 Problema 17
 #include <cstring>
