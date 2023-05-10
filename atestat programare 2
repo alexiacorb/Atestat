@@ -232,11 +232,12 @@ int main(){
     PROBLEMA 6 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 ifstream fin("atestat.in");
 ofstream fout("atestat.out");
 int n;
-float x[100];
+double x[100];
 void citire(){
     fin>>n;
     for(int i=1;i<=n;i++){
@@ -249,7 +250,36 @@ int main(){
             cout<<x[i]<<" ";
       }
       cout<<endl;
-      
+      double k=0,s=0;
+      for(int i=1;i<=n;i++){
+          if(x[i]<0){
+            k++;
+            s=s+x[i];
+          }
+      }
+      if(k==0){
+        cout<<"nu exista";
+      }
+      else{
+        cout<<fixed<<setprecision(2)<<s/k;
+      }
+      cout<<endl;
+      int p1,p2;
+      double aux;
+      cin>>p1>>p2;
+      for(int i=p1;i<=p2-1;i++){
+        for(int j=i+1;j<=p2;j++){
+            if(x[i]>x[j]){
+                aux=x[i];
+                x[i]=x[j];
+                x[j]=aux;
+            }
+      }
+      }
+      for(int i=1;i<=n;i++){
+        fout<<x[i]<<" ";
+      }
+}      
   PROBLEMA 7 
   #include <iostream>
 #include <fstream>
