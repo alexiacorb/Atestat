@@ -1,9 +1,11 @@
 Subiectul 2
+
 #include <iostream>
 #include <fstream>
+
+using namespace std;
 ifstream fin("atestat.in");
 ofstream fout("atestat.out");
-using namespace std;
 int n,x[31];
 void citire(){
     fin>>n;
@@ -11,7 +13,7 @@ void citire(){
         fin>>x[i];
     }
 }
-int prin(int n){
+int prim(int n){
     if(n==1 || n==0){
         return 0;
     }
@@ -24,7 +26,7 @@ int prin(int n){
 }
 int main()
 {
-    int minn=0,maxx=0;
+    int minn=100000000,maxx=0;
     citire();
     for(int i=1;i<=n;i++){
         if(prim(x[i])==1){
@@ -33,23 +35,22 @@ int main()
     }
     cout<<endl;
     for(int i=1;i<=n;i++){
-        if(v[i]<minn && v[i]%2==1){
+        if(x[i]<minn && x[i]%2==1){
             minn=x[i];
         }
-        if(v[i]>maxx && v[i]%2==0){
+        if(x[i]>maxx && x[i]%2==0){
             maxx=x[i];
         }
     }
-    cout<<minn<<" "<<maxx<<endl;
+    cout<<maxx<<" "<<minn<<endl;
     for(int i=1;i<=n-1;i++){
         for(int j=i+1;j<=n;j++){
             if(prim(x[i])==1 && prim(x[j])==1 && x[i]+x[j]==maxx && x[i]%2==1 && x[j]%2==1){
                 fout<<x[i]<<" "<<x[j];
-                break;
             }
         }
     }
-    
+
     return 0;
 }
 PROBLEMA 3
