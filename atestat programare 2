@@ -293,6 +293,14 @@ void citire(){
         fin>>x[i];
     }
 }
+int nr_cifre(int n){
+    int nr=0;
+   while(n!=0){
+    nr++;
+    n=n/10;
+   }
+   return nr;
+}
 int main()
 {
     citire();
@@ -301,6 +309,20 @@ int main()
        cout<<x[i]<<" ";
     }
     cout<<endl;
+    for(int i=1;i<=n;i++)
+    {
+       cout<<nr_cifre(x[i])<<" ";
+    }
+    cout<<endl;
+    int s=0;
+     for(int i=1;i<=n;i++)
+    {
+       if(x[i]%2==1){
+          s=s+x[i];
+       }
+    }
+    fout<<s;
+}
 
 Problema 17
 #include <cstring>
