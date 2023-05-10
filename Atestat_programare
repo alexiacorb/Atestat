@@ -1,12 +1,4 @@
 Subiectul 2
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 #include <fstream>
 ifstream fin("atestat.in");
@@ -52,11 +44,55 @@ int main()
     for(int i=1;i<=n-1;i++){
         for(int j=i+1;j<=n;j++){
             if(prim(x[i])==1 && prim(x[j])==1 && x[i]+x[j]==maxx && x[i]%2==1 && x[j]%2==1){
-                cout<<x[i]<<" "<<x[j];
+                fout<<x[i]<<" "<<x[j];
                 break;
             }
         }
     }
     
+    return 0;
+}
+PROBLEMA 3
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main()
+{
+    citire();
+    for(int i=1;i<=n;i++)
+    {
+        if(x[i]%2==0){
+            cout<<x[i]<<" ";
+        }
+    }
+    cout<<endl;
+    int b=0,a=100000000;
+    for(int i=1;i<=n;i++)
+    {
+        if(x[i]>b){
+            b=x[i];
+        }
+        if(x[i]<a){
+            a=x[i];
+        }
+    }
+    cout<<a<<endl;
+    cout<<b<<endl;
+    int r=0;
+    while(b!=0){
+        r=a%b;
+        a=b;
+        b=r;
+    }
+    fout<<a;
     return 0;
 }
