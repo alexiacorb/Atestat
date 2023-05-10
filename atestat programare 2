@@ -1,0 +1,273 @@
+Subiectul 2
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[31];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int prim(int n){
+    if(n==1 || n==0){
+        return 0;
+    }
+    for(int d=2;d*d<=n;d++){
+        if(n%d==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+int main()
+{
+    int minn=100000000,maxx=0;
+    citire();
+    for(int i=1;i<=n;i++){
+        if(prim(x[i])==1){
+            cout<<x[i]<<" ";
+        }
+    }
+    cout<<endl;
+    for(int i=1;i<=n;i++){
+        if(x[i]<minn && x[i]%2==1){
+            minn=x[i];
+        }
+        if(x[i]>maxx && x[i]%2==0){
+            maxx=x[i];
+        }
+    }
+    cout<<maxx<<" "<<minn<<endl;
+    for(int i=1;i<=n-1;i++){
+        for(int j=i+1;j<=n;j++){
+            if(prim(x[i])==1 && prim(x[j])==1 && x[i]+x[j]==maxx && x[i]%2==1 && x[j]%2==1){
+                fout<<x[i]<<" "<<x[j];
+            }
+        }
+    }
+
+    return 0;
+}
+PROBLEMA 3
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main()
+{
+    citire();
+    for(int i=1;i<=n;i++)
+    {
+        if(x[i]%2==0){
+            cout<<x[i]<<" ";
+        }
+    }
+    cout<<endl;
+    int b=0,a=100000000;
+    for(int i=1;i<=n;i++)
+    {
+        if(x[i]>b){
+            b=x[i];
+        }
+        if(x[i]<a){
+            a=x[i];
+        }
+    }
+    cout<<a<<endl;
+    cout<<b<<endl;
+    int r=0;
+    while(b!=0){
+        r=a%b;
+        a=b;
+        b=r;
+    }
+    fout<<a;
+    return 0;
+}
+
+PROBLEMA 4 
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main(){
+     citire();
+      for(int i=1;i<=n;i++){
+        if(x[i]%2==1){
+            cout<<x[i]<<" ";
+        }
+      }
+      cout<<endl;
+     int ok,k=0,copie=0;
+    for(int i=1;i<=n;i++){
+          copie=x[i];
+          ok=1;
+          while(copie!=0){
+              if(copie%2==1){
+                  ok=0;
+              }
+              copie=copie/10;
+          }
+          if(ok==1){
+              cout<<x[i]<<" ";
+              k++;
+          }
+    }
+    if(k==0){
+        cout<<"nu exista";
+    }
+    cout<<endl;
+    copie=x[1];
+    int v[10]={};
+    while(copie!=0){
+        v[copie%10]++;
+        copie=copie/10;
+    }
+    int maxx=0;
+    for(int i=9;i>=1;i--){
+        if(v[i]>0){
+            maxx=maxx*10+i;
+        }
+    }
+    int minn=0;
+    for(int i=1;i<=9;i++){
+        if(v[i]>0){
+            minn=minn*10+i;
+        }
+    }
+    fout<<maxx<<" "<<minn;
+}
+PROBLEMA 5
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int prim(int n){
+    if(n==1 || n==0){
+        return 0;
+    }
+    for(int d=2;d*d<=n;d++){
+        if(n%d==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+int main(){
+     citire();
+      for(int i=1;i<=n;i++){
+        if(x[i]%2==0){
+            cout<<x[i]<<" ";
+        }
+      }
+      cout<<endl;
+       int ok,k=0,copie=0;
+    for(int i=1;i<=n;i++){
+          copie=x[i];
+          ok=1;
+          while(copie!=0){
+              if(copie%2==0){
+                  ok=0;
+              }
+              copie=copie/10;
+          }
+          if(ok==1){
+              cout<<x[i]<<" ";
+              k++;
+          }
+    }
+    if(k==0){
+        cout<<"nu exista";
+    }
+    cout<<endl;
+    cin>>k;
+    int nr=0;
+    for(int i=1;i<=n;i++){
+          copie=x[i];
+          for(int d=2;d*d<=copie;d++){
+              if(n%d==0 && prim(d)==1){
+                  if(d*d==copie){
+                      nr++;
+                  }
+                  else{
+                      nr=nr+2;
+                  }
+              }
+          }
+          if(nr==k){
+              fout<<x[i]<<" ";
+          }
+    }
+}
+
+    PROBLEMA 6 
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n;
+float x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main(){
+     citire();
+      for(int i=1;i<=n;i++){
+            cout<<x[i]<<" ";
+      }
+      cout<<endl;
+      
+  PROBLEMA 7 
+  #include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main()
+{
+    citire();
+    for(int i=n;i>=1;i--)
+    {
+       cout<<x[i]<<" ";
+    }
+    cout<<endl;
