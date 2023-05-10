@@ -96,3 +96,64 @@ int main()
     fout<<a;
     return 0;
 }
+PROBLEMA 4 
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("atestat.in");
+ofstream fout("atestat.out");
+int n,x[100];
+void citire(){
+    fin>>n;
+    for(int i=1;i<=n;i++){
+        fin>>x[i];
+    }
+}
+int main(){
+     citire();
+      for(int i=1;i<=n;i++){
+        if(x[i]%2==1){
+            cout<<x[i]<<" ";
+        }
+      }
+      cout<<endl;
+     int ok,k=0,copie=0;
+    for(int i=1;i<=n;i++){
+          copie=x[i];
+          ok=1;
+          while(copie!=0){
+              if(copie%2==1){
+                  ok=0;
+              }
+              copie=copie/10;
+          }
+          if(ok==1){
+              cout<<x[i]<<" ";
+              k++;
+          }
+    }
+    if(k==0){
+        cout<<"nu exista";
+    }  
+    cout<<endl;
+    ////nu rez corect c
+    int copie=x[1],v[10]={};
+    while(copie!=0){
+        v[copie%10]++;
+        copie=copie/10;
+    }
+    int maxx=0;
+    cout<<v[3]<<endl;
+    for(int i=9;i>=1;i--){
+        if(v[i]>0){
+            maxx=maxx*10+v[i];
+        }
+    }
+    int minn=0;
+    for(int i=1;i<=9;i++){
+        if(v[i]>0){
+            minn=minn*10+v[i];
+        }
+    }
+    fout<<maxx<<" "<<minn;
+}
